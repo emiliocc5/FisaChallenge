@@ -1,5 +1,6 @@
 package com.fisa.TrainsChallenge.services;
 
+import com.fisa.TrainsChallenge.exception.LogicalErrorException;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -56,7 +57,7 @@ public class RailroadInformationServiceTest {
     }
 
     @Test
-    public void getNumberOfTripsWithAMaximumStopOfThreeFromCToC() {
+    public void getNumberOfTripsWithAMaximumStopOfThreeFromCToC() throws LogicalErrorException {
         String initialPosition = "C";
         String finalPosition = "C";
         int maximumStops = 3;
@@ -66,7 +67,7 @@ public class RailroadInformationServiceTest {
     }
 
     @Test
-    public void getNumberOfTripsWithExactlyFourOfStopsFromAToC() {
+    public void getNumberOfTripsWithExactlyFourOfStopsFromAToC() throws LogicalErrorException {
         String initialPosition = "A";
         String finalPosition = "C";
         int exactStops = 4;
@@ -76,7 +77,7 @@ public class RailroadInformationServiceTest {
     }
 
     @Test
-    public void getLengthOfShortestRouteFromAToC() {
+    public void getLengthOfShortestRouteFromAToC() throws LogicalErrorException {
         String initialPosition = "A";
         String finalPosition = "C";
         int dist = railroadInformationService.getLengthOfShortestRoute(initialPosition, finalPosition, getStringGraph());
@@ -84,7 +85,7 @@ public class RailroadInformationServiceTest {
     }
 
     @Test
-    public void getLengthOfShortestRouteFromBToB() {
+    public void getLengthOfShortestRouteFromBToB() throws LogicalErrorException {
         String initialPosition = "B";
         String finalPosition = "B";
         int dist = railroadInformationService.getLengthOfShortestRoute(initialPosition, finalPosition, getStringGraph());
@@ -92,7 +93,7 @@ public class RailroadInformationServiceTest {
     }
 
     @Test
-    public void getNumberOfRoutesFromCToCWithADistanceLessThanThirty() throws NoSuchRouteException {
+    public void getNumberOfRoutesFromCToCWithADistanceLessThanThirty() throws NoSuchRouteException, LogicalErrorException {
         String initialPosition = "C";
         String finalPosition = "C";
         int maximumDistance = 30;

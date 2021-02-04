@@ -1,5 +1,6 @@
 package com.fisa.TrainsChallenge.controller;
 
+import com.fisa.TrainsChallenge.exception.LogicalErrorException;
 import com.fisa.TrainsChallenge.exception.InvalidInputException;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
 import com.fisa.TrainsChallenge.model.response.ApiSuccess;
@@ -34,7 +35,7 @@ public class RailroadInformationController {
     }
 
     @PostMapping(value = "/number-of-trips-with-maximum-stop")
-    public ResponseEntity<Object> getNumberOfTripsWithAMaximumStop(@RequestBody Map<String, String> req) throws InvalidInputException {
+    public ResponseEntity<Object> getNumberOfTripsWithAMaximumStop(@RequestBody Map<String, String> req) throws InvalidInputException, LogicalErrorException {
         String initialPosition = req.get("initialPosition");
         if (initialPosition == null) {
             throw new InvalidInputException("Initial Position parameter cannot be null");
@@ -58,7 +59,7 @@ public class RailroadInformationController {
     }
 
     @PostMapping(value = "/number-of-trips-with-exactly-stops")
-    public ResponseEntity<Object> getNumberOfTripsWithExactlyNumberOfStops(@RequestBody Map<String, String> req) throws InvalidInputException {
+    public ResponseEntity<Object> getNumberOfTripsWithExactlyNumberOfStops(@RequestBody Map<String, String> req) throws InvalidInputException, LogicalErrorException {
         String initialPosition = req.get("initialPosition");
         if (initialPosition == null) {
             throw new InvalidInputException("Initial Position parameter cannot be null");
@@ -80,7 +81,7 @@ public class RailroadInformationController {
     }
 
     @PostMapping(value = "/short-distance")
-    public ResponseEntity<Object> getLengthOfShortestRoute(@RequestBody Map<String, String> req) throws InvalidInputException {
+    public ResponseEntity<Object> getLengthOfShortestRoute(@RequestBody Map<String, String> req) throws InvalidInputException, LogicalErrorException {
         String initialPosition = req.get("initialPosition");
         if (initialPosition == null) {
             throw new InvalidInputException("Initial Position parameter cannot be null");
@@ -98,7 +99,7 @@ public class RailroadInformationController {
     }
 
     @PostMapping(value = "/number-of-routes")
-    public ResponseEntity<Object> getNumberOfRoutes(@RequestBody Map<String, String> req) throws InvalidInputException, NoSuchRouteException {
+    public ResponseEntity<Object> getNumberOfRoutes(@RequestBody Map<String, String> req) throws InvalidInputException, NoSuchRouteException, LogicalErrorException {
         String initialPosition = req.get("initialPosition");
         if (initialPosition == null) {
             throw new InvalidInputException("Initial Position parameter cannot be null");

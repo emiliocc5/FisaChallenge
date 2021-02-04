@@ -1,5 +1,6 @@
 package com.fisa.TrainsChallenge.configuration;
 
+import com.fisa.TrainsChallenge.exception.LogicalErrorException;
 import com.fisa.TrainsChallenge.model.response.ApiError;
 import com.fisa.TrainsChallenge.exception.InvalidInputException;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({ NoSuchRouteException.class, InvalidInputException.class })
+    @ExceptionHandler({ NoSuchRouteException.class, InvalidInputException.class, LogicalErrorException.class})
     public ResponseEntity<Object> handleNoSuchRouteException(Exception ex) {
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
         apiError.setMessage(ex.getMessage());

@@ -1,5 +1,6 @@
 package com.fisa.TrainsChallenge.utils;
 
+import com.fisa.TrainsChallenge.exception.LogicalErrorException;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
 import com.fisa.TrainsChallenge.model.Graph;
 import com.fisa.TrainsChallenge.model.Vertex;
@@ -37,7 +38,7 @@ public class Analyzer {
         return count;
     }
 
-    public int getNumberOfTripsWithExactlyNumberOfStops(String initialPosition, String finalPosition, Graph graph, int stops) {
+    public int getNumberOfTripsWithExactlyNumberOfStops(String initialPosition, String finalPosition, Graph graph, int stops) throws LogicalErrorException {
         LinkedList<String> visited = new LinkedList<>();
         trips = 0;
         visited.add(initialPosition);
@@ -46,6 +47,7 @@ public class Analyzer {
     }
 
     public int getLengthOfShortestRoute(String initialPosition, String finalPosition, Graph graph) {
+
         Map<String, Vertex> parentMap = new HashMap<>(graph.getNumberOfVertices());
         for (String vertex : graph.getVertexes()) {
             parentMap.put(vertex, new Vertex(initialPosition, Integer.MAX_VALUE));
@@ -162,7 +164,7 @@ public class Analyzer {
         for (String node : nodes) {
             if (node.equals(finalPosition)) {
                 visited.add(node);
-                int routedDistance =  getDistance(visited.toArray(new String[0]), graph);
+                int routedDistance = getDistance(visited.toArray(new String[0]), graph);
                 if (routedDistance < maxDistance) {
                     trips += 1;
                 } else {
