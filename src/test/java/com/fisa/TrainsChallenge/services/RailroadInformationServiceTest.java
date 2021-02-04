@@ -1,5 +1,6 @@
 package com.fisa.TrainsChallenge.services;
 
+import com.fisa.TrainsChallenge.TrainsChallengeApplicationTests;
 import com.fisa.TrainsChallenge.exception.LogicalErrorException;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
 import org.junit.Assert;
@@ -8,7 +9,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class RailroadInformationServiceTest {
+public class RailroadInformationServiceTest extends TrainsChallengeApplicationTests {
 
     private RailroadInformationService railroadInformationService;
 

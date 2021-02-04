@@ -92,9 +92,14 @@ La aplicacion cuenta con los siguientes servicios
 
 # Ejecucion
 Una vez descargado el proyecto
-- Abrir consola 1
+- Abrir consola 
 - Navegar hasta la carpeta TrainsChallenge
-- Ejecutar mvn Spring-Boot:Run para ejecutar el proyecto 
+- Ejecutar mvn spring-boot:run para ejecutar el proyecto
+
+Para correr los tests
+- Abrir consola
+- Navegar hasta la carpeta TrainsChallenge
+- Ejecutar mvn -Dtest=RailroadInformationServiceTest test
 
 # Utilidades
 Link a coleccion de Postman: https://www.getpostman.com/collections/1777bd60055fc2ede285
