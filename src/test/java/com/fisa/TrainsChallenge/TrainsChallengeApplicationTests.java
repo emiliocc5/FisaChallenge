@@ -1,10 +1,10 @@
-package com.fisa.FisaChallenge;
+package com.fisa.TrainsChallenge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FisaChallengeApplicationTests {
+class TrainsChallengeApplicationTests {
 
 	@Test
 	void contextLoads() {
