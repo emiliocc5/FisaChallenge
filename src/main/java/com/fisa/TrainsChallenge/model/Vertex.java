@@ -1,29 +1,29 @@
 package com.fisa.TrainsChallenge.model;
 
-//TODO change names
 public class Vertex {
-    public String v;
-    public int dist;//distance of start vertex and v
 
-    public Vertex(String v, int dist) {
-        this.v = v;
-        this.dist = dist;
+    private String vertexName;
+    private int distance;
+
+    public Vertex(String vertexName, int distance) {
+        this.vertexName = vertexName;
+        this.distance = distance;
 
     }
 
-    public String getV() {
-        return v;
+    public String getVertexName() {
+        return vertexName;
     }
 
-    public void setV(String v) {
-        this.v = v;
+    public void setVertexName(String vertexName) {
+        this.vertexName = vertexName;
     }
 
-    public int getDist() {
-        return dist;
+    public int getDistance() {
+        return distance;
     }
 
-    public void setDist(int dist) {
-        this.dist = dist;
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }

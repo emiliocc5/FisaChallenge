@@ -2,30 +2,25 @@ package com.fisa.TrainsChallenge.model;
 
 import java.util.*;
 
-
-//TODO refactor this class
-//TODO Al armar el grafo, verificar que no haya blancos
-
 public class Graph {
-    private Map<String, Map<String, Integer>> adjacencyTable;  // adjacency table, store the relationship of each vertex
-    private int numberOfVertices;  //number of vertices
-    private Set<String> vertexes;  //all vertex collections
+    private Map<String, Map<String, Integer>> adjacencyTable;
+    private int numberOfVertices;
+    private Set<String> vertexes;
 
-    public Graph(String graph){
+    public Graph(String graph) {
         vertexes = new HashSet<>();
         adjacencyTable = new HashMap<>();
-        if (null == graph || graph.length() <=0 ){
+        if (null == graph || graph.length() <= 0) {
             return;
         }
-        //TODO replace vertexLenghts with weightedRelations
-        String[] vertexLengths = graph.split(",");
-        for (String vertexLength : vertexLengths) {
-            if (vertexLength.length() != 3) {
+        String[] weightedRelations = graph.split(",");
+        for (String weightedRelation : weightedRelations) {
+            if (weightedRelation.length() != 3) {
                 continue;
             }
-            String s = String.valueOf(vertexLength.charAt(0));
-            String t = String.valueOf(vertexLength.charAt(1));
-            int w = vertexLength.charAt(2) - '0';
+            String s = String.valueOf(weightedRelation.charAt(0));
+            String t = String.valueOf(weightedRelation.charAt(1));
+            int w = weightedRelation.charAt(2) - '0';
             Map<String, Integer> sEdgeMap = adjacencyTable.computeIfAbsent(s, k -> new HashMap<>());
             sEdgeMap.put(t, w);
             if (vertexes.add(s)) {
