@@ -3,7 +3,6 @@ package com.fisa.TrainsChallenge.utils;
 import com.fisa.TrainsChallenge.exception.NoSuchRouteException;
 import com.fisa.TrainsChallenge.model.Graph;
 import com.fisa.TrainsChallenge.model.Vertex;
-import org.springframework.http.HttpStatus;
 
 import java.util.*;
 
@@ -31,22 +30,45 @@ public class Analyzer {
         List<Object[]> paths = getPathsOfTwoVertex(initialPosition, finalPosition, graph);
         int count = 0;
         for (Object[] path : paths) {
-            if (path.length <= maximumStops) {
+            if (path.length - 1 <= maximumStops) {
                 count++;
             }
         }
         return count;
     }
 
-    public int getNumberOfTripsWithExactlyNumberOfStops(String initialPosition, String finalPosition, Graph graph, int maximumStops) {
-        List<Object[]> paths = getPathsOfTwoVertex(initialPosition, finalPosition, graph);
-        int count = 0;
-        for (Object[] path : paths) {
-            if (path.length == maximumStops) {
-                count++;
+    public int getNumberOfTripsWithExactlyNumberOfStops(String start, String end, Graph graph, int exact ) {
+        LinkedList<String> visited = new LinkedList<>();
+        trips = 0;
+        visited.add(start);
+        numberOfTripsExactStops(end, visited, graph, exact);
+        return trips;
+
+    }
+
+    private void numberOfTripsExactStops(String end, LinkedList<String> visited, Graph graph, int exact) {
+        Set<String> nodes = graph.getAdjacencyTable().get(visited.getLast()).keySet();
+        for (String node : nodes) {
+            if (visited.size() > exact) {
+                continue;
+            }
+            if (node.equals(end)) {
+                if (visited.size() == (exact)) {
+                    trips += 1;
+                }
+                visited.add(node);
+                visited.removeLast();
+                break;
             }
         }
-        return count;
+        for (String node : nodes) {
+            if (visited.contains(node) && graph.getAdjacencyTable().get(node).get(end) == null) {
+                continue;
+            }
+            visited.addLast(node);
+            numberOfTripsExactStops(end, visited, graph, exact);
+            visited.removeLast();
+        }
     }
 
     private List<Object[]> getPathsOfTwoVertex(String initialPosition, String finalPosition, Graph graph) {

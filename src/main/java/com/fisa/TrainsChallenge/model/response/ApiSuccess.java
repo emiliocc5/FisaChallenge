@@ -17,4 +17,8 @@ public class ApiSuccess {
         this();
         this.response = response;
     }
+
+    public int getResponse() {
+        return response;
+    }
 }
