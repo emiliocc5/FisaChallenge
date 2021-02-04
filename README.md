@@ -97,6 +97,6 @@ Una vez descargado el proyecto
 - Ejecutar mvn Spring-Boot:Run para ejecutar el proyecto 
 
 # Utilidades
-Link a coleccion de Postman: 
+Link a coleccion de Postman: https://www.getpostman.com/collections/1777bd60055fc2ede285
 
 
